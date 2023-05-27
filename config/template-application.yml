@@ -1,0 +1,75 @@
+server:
+  port: 8089
+  error:
+    include-message: always
+
+logging:
+  level:
+    org.springframework: INFO
+    com.mkyong: DEBUG
+    jdbc: DEBUG
+
+management:
+  security:
+    enabled: false
+  endpoint:
+    health:
+      show-details: "ALWAYS"
+    web:
+      exposure:
+        include: health, info
+  info:
+    env:
+      enabled: true
+    java:
+      enabled: true
+
+features:
+  canaryflag: true
+  datastream: true
+  dbdata: true
+  messaging: false
+
+spring:
+  application:
+    name: accounts-application
+  cloud:
+    consul:
+      enebled: true
+      host: localhost
+      port: 8500
+      discovery:
+        enebled: true
+        healthCheckPath: ${management.server.servlet.context-path}/actuator/health
+        healthCheckInterval: 15s
+        tags: env=dev
+        serviceName: dev-${spring.application.name}
+    config:
+      enabled: false
+  profiles:
+    active: demo
+  main:
+    banner-mode: log
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://<YOURDBHOSTHERE>:3306/<YOURDBNAMEHERE>
+    username: "<YOURUSERHERE>"
+    password: "<YOURPASSWORDHERE"
+    hikari:
+      # default-time-zone: '+01:00'
+      data-source-properties:
+        serverTimezone: "GMT"
+        useSSL: false
+    # driver-class-name: com.mysql.cj.jdbc.Driver
+
+#custom properties
+info:
+  app:
+    name: accounts-application
+    description: Spring Demo application
+  author: 
+    name: "Stefan Monko"
+    mail: "stefan@stefanmonko.sk / monkos@posam.sk"
