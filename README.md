@@ -42,9 +42,9 @@ features:
 ```
 
 **canaryflag** - no real function. Just to demonstrate canary deployment. Check */feature-flags*  
-**datastream** - activate api endpoints with built-in data set
-**dbdata** - activate api which get data from database.
-**messaging** - activate messaging simulation. NOT Implemented YET!
+**datastream** - activate api endpoints with built-in data set  
+**dbdata** - activate api which get data from database.  
+**messaging** - activate messaging simulation. NOT Implemented YET!  
 
 ### API Endpoints
 Show feature flags
@@ -77,6 +77,20 @@ Show account with specific email
 Show all accounts
 ```
 @RequestMapping("/usersall")
+```
+
+### Service Discovery
+By default application will register to consul agent. To disable this function modify application.yml:
+```
+spring:
+  ...
+  cloud:
+    consul:
+      enabled: false
+      ...
+      discovery:
+        enebled: false
+        ...
 ```
 
 ### Use in memory DB
