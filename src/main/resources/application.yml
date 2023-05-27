@@ -48,26 +48,26 @@ spring:
     active: dev
   main:
     banner-mode: log
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: update
-  datasource:
-    url: jdbc:mysql://localhost:3306/usersdb
-    username: "dbuser@localhost"
-    password: "localpass"
-    hikari:
-      data-source-properties:
-        serverTimezone: "GMT"
-        useSSL: false
-# In memory DB - for dbdata flag set to false
-  # datasource:
-  #   url: jdbc:h2:mem:testdb
-  #   driverClassName: org.h2.Driver
-  #   username: sa
-  #   password: password
   # jpa:
-  #   database-platform: org.hibernate.dialect.H2Dialect
+  #   show-sql: true
+  #   hibernate:
+  #     ddl-auto: update
+  # datasource:
+  #   url: jdbc:mysql://localhost:3306/usersdb
+  #   username: "dbuser@localhost"
+  #   password: "localpass"
+  #   hikari:
+  #     data-source-properties:
+  #       serverTimezone: "GMT"
+  #       useSSL: false
+# In memory DB - for dbdata flag set to false
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
 
 #custom properties
 info:
